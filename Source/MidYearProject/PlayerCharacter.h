@@ -16,10 +16,19 @@ class MIDYEARPROJECT_API APlayerCharacter : public AArenaCharacter
 
 public:
 
-	virtual void BeginPlay() ovveride;
+	virtual void BeginPlay();
 
-	virtual void Tick(float DeltaTime) ovveride;
+	virtual void Tick(float DeltaTime);
 
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) ovveride;
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent);
 	
+protected:
+
+	void MoveForward(float Value);
+	void MoveRight(float Value);
+
+
+	void Mouse_X(float Value);
+	void Mouse_Y(float Value);
+
 };
