@@ -30,5 +30,4 @@ protected:
 
 	void Mouse_X(float Value);
 	void Mouse_Y(float Value);
-
 };

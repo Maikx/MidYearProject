@@ -2,6 +2,7 @@
 
 
 #include "PlayerCharacter.h"
+#include "ArenaCharacter.cpp"
 #include "Components/InputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Engine/World.h"
@@ -9,6 +10,7 @@
 void APlayerCharacter::BeginPlay() {
 
 	Super::BeginPlay();
+	health = 1.00f;
 }
 
 void APlayerCharacter::Tick(float DeltaTime)
@@ -24,8 +26,8 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAxis("MoveRight", this, &APlayerCharacter::MoveRight);
 	PlayerInputComponent->BindAxis("Mouse_X", this, &APlayerCharacter::Mouse_X);
 	PlayerInputComponent->BindAxis("Mouse_Y", this, &APlayerCharacter::Mouse_Y);
-
-	//attack
+	
+	PlayerInputComponent->BindAction("Attack", IE_Pressed, this, &APlayerCharacter::StartAttack);
 
 }
 
