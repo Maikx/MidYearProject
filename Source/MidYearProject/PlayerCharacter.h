@@ -14,6 +14,9 @@ class MIDYEARPROJECT_API APlayerCharacter : public AArenaCharacter
 {
 	GENERATED_BODY()
 
+	void StartAttack();
+	void EndAttack();
+
 public:
 
 	virtual void BeginPlay();
@@ -30,4 +33,5 @@ protected:
 
 	void Mouse_X(float Value);
 	void Mouse_Y(float Value);
+
 };

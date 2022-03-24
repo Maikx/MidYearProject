@@ -8,6 +8,7 @@ AArenaCharacter::AArenaCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	health = 1.00f;
 }
 
 // Called when the game starts or when spawned
@@ -30,22 +31,13 @@ void AArenaCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 
 }
 
-void AArenaCharacter::StartAttack()
-{
-	UE_LOG(LogTemp, Warning, TEXT("Attack"));
-	TakeDamage(0.2f);
-	//bIsAttacking;
-}
-
 void AArenaCharacter::TakeDamage(float _damageAmount)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Damage for %f points."), _damageAmount);
 	health -= _damageAmount;
 
-	if (health < 0.0f)
+	if (health < 0.00f)
 	{
-		health = 0.0f;
-		bIsAlive = false;
+		health = 0.00f;
 	}
 }
 

@@ -2,7 +2,6 @@
 
 
 #include "PlayerCharacter.h"
-#include "ArenaCharacter.cpp"
 #include "Components/InputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Engine/World.h"
@@ -10,7 +9,6 @@
 void APlayerCharacter::BeginPlay() {
 
 	Super::BeginPlay();
-	health = 1.00f;
 }
 
 void APlayerCharacter::Tick(float DeltaTime)
@@ -26,8 +24,8 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAxis("MoveRight", this, &APlayerCharacter::MoveRight);
 	PlayerInputComponent->BindAxis("Mouse_X", this, &APlayerCharacter::Mouse_X);
 	PlayerInputComponent->BindAxis("Mouse_Y", this, &APlayerCharacter::Mouse_Y);
-	
 	PlayerInputComponent->BindAction("Attack", IE_Pressed, this, &APlayerCharacter::StartAttack);
+	PlayerInputComponent->BindAction("Attack", IE_Released, this, &APlayerCharacter::EndAttack);
 
 }
 
@@ -73,5 +71,16 @@ void APlayerCharacter::Mouse_Y(float Value)
 {
 	float Input = Value * 100.0f * GetWorld()->GetDeltaSeconds();
 	AddControllerPitchInput(Input);
+}
+
+void APlayerCharacter::StartAttack()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Attacking."));
+	bIsAttacking = true;
+}
+
+void APlayerCharacter::EndAttack()
+{
+	bIsAttacking = false;
 }
 
