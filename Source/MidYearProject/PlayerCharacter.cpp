@@ -25,8 +25,6 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAxis("Mouse_X", this, &APlayerCharacter::Mouse_X);
 	PlayerInputComponent->BindAxis("Mouse_Y", this, &APlayerCharacter::Mouse_Y);
 	PlayerInputComponent->BindAction("Attack", IE_Pressed, this, &APlayerCharacter::StartAttack);
-	PlayerInputComponent->BindAction("Attack", IE_Released, this, &APlayerCharacter::EndAttack);
-
 }
 
 void APlayerCharacter::MoveForward(float Value)
@@ -75,12 +73,6 @@ void APlayerCharacter::Mouse_Y(float Value)
 
 void APlayerCharacter::StartAttack()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Attacking."));
 	bIsAttacking = true;
-}
-
-void APlayerCharacter::EndAttack()
-{
-	bIsAttacking = false;
 }
 
